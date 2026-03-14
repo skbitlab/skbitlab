@@ -25,10 +25,9 @@ Senior Software Engineer with 6+ years of experience in end to end software deve
 
 
 ## 🚀 Tech Stack
-![Python](https://img.shields.io/badge/Python-blue)
-![Flask](https://img.shields.io/badge/Django-green)
-![REST API](https://img.shields.io/badge/Docker-blue)
-![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=skbitlab)
+- ![Python](https://img.shields.io/badge/Python-green)
+- ![Flask](https://img.shields.io/badge/Django-blue)
+- ![REST API](https://img.shields.io/badge/Docker-blue)
 
 
 ## 📊 GitHub Stats
@@ -36,30 +35,9 @@ Senior Software Engineer with 6+ years of experience in end to end software deve
 
 
 ## 📫 Connect With Me
-- 📧 Email: sudhirkr7870@gmail.com | sudhirkr7870@live.com
-- 📱 Mobile: +91-9304923835
+- 📧 Email: 'sudhirkr7870@gmail.com' | 'sudhirkr7870@live.com'
+- 📱 Mobile: '+91-9304923835'
 - 💼 LinkedIn: [https://www.linkedin.com/in/sudhir9304923835/](https://www.linkedin.com/in/sudhir9304923835/)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
