@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Sudhir Kumar — Senior Software Engineer specializing in automation frameworks, CI/CD pipelines, and DevOps engineering.">
+<title>Sudhir Kumar — Senior Software Engineer</title>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,300;0,400;0,500;0,600;1,300&family=Bebas+Neue&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:        #060b14;
+    --surface:   #0c1422;
+    --surface2:  #101c2e;
+    --border:    #1a2d45;
+    --border2:   #243d58;
+    --text:      #cdd8e8;
+    --muted:     #4a6380;
+    --bright:    #e8f0fa;
+    --cyan:      #38d9f5;
+    --cyan-dim:  rgba(56,217,245,0.12);
+    --orange:    #f5813a;
+    --green:     #3af5a0;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    line-height: 1.65;
+    overflow-x: hidden;
+  }
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background-image:
+      linear-gradient(rgba(56,217,245,0.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(56,217,245,0.025) 1px, transparent 1px);
+    background-size: 48px 48px;
+    pointer-events: none;
+    z-index: 0;
+  }
+  body > * { position: relative; z-index: 1; }
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border2); }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 18px 56px;
+    transition: background 0.3s, border-color 0.3s;
+    border-bottom: 1px solid transparent;
+  }
+  nav.stuck { background: rgba(6,11,20,0.92); backdrop-filter: blur(16px); border-color: var(--border); }
+  .nav-logo { font-family: 'Bebas Neue', sans-serif; font-size: 22px; letter-spacing: 2px; color: var(--cyan); }
+  .nav-links { display: flex; gap: 32px; }
+  .nav-links a {
+    font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--muted); text-decoration: none; transition: color 0.2s; position: relative;
+  }
+  .nav-links a::after {
+    content: ''; position: absolute; bottom: -3px; left: 0; right: 0;
+    height: 1px; background: var(--cyan); transform: scaleX(0); transform-origin: left; transition: transform 0.25s;
+  }
+  .nav-links a:hover { color: var(--cyan); }
+  .nav-links a:hover::after { transform: scaleX(1); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh; display: flex; flex-direction: column; justify-content: center;
+    padding: 120px 56px 80px; position: relative; overflow: hidden;
+  }
+  .hero-glow {
+    position: absolute; top: 10%; right: -5%; width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(56,217,245,0.07) 0%, transparent 65%); pointer-events: none;
+  }
+  .hero-glow2 {
+    position: absolute; bottom: 0; left: -10%; width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(245,129,58,0.05) 0%, transparent 65%); pointer-events: none;
+  }
+  .hero-tag {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--cyan); margin-bottom: 28px;
+  }
+  .hero-tag-line { width: 36px; height: 1px; background: var(--cyan); }
+  .hero-name {
+    font-family: 'Bebas Neue', sans-serif; font-size: clamp(64px, 9vw, 140px); line-height: 0.9;
+    letter-spacing: 4px; color: var(--bright); margin-bottom: 4px; animation: fadeUp 0.8s ease both;
+  }
+  .hero-name .outline { -webkit-text-stroke: 1px rgba(205,216,232,0.2); color: transparent; }
+  .hero-title {
+    font-family: 'IBM Plex Sans', sans-serif; font-size: clamp(14px, 1.8vw, 20px); font-weight: 300;
+    color: var(--muted); letter-spacing: 0.05em; margin-bottom: 36px; animation: fadeUp 0.8s 0.15s ease both;
+  }
+  .hero-title span { color: var(--cyan); font-weight: 500; }
+  .hero-desc {
+    max-width: 600px; font-family: 'IBM Plex Sans', sans-serif; font-size: 15px; font-weight: 300;
+    color: var(--muted); line-height: 1.85; margin-bottom: 48px; animation: fadeUp 0.8s 0.25s ease both;
+  }
+  .hero-actions { display: flex; gap: 16px; align-items: center; animation: fadeUp 0.8s 0.35s ease both; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px; padding: 13px 28px;
+    font-family: 'IBM Plex Mono', monospace; font-size: 12px; letter-spacing: 0.06em;
+    text-decoration: none; cursor: pointer; border: none; transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .btn-cyan { background: var(--cyan); color: var(--bg); font-weight: 600; }
+  .btn-cyan:hover { transform: translate(-2px,-2px); box-shadow: 4px 4px 0 var(--orange); }
+  .btn-outline { background: transparent; color: var(--cyan); border: 1px solid var(--border2); }
+  .btn-outline:hover { border-color: var(--cyan); background: var(--cyan-dim); }
+  .hero-meta {
+    position: absolute; right: 56px; bottom: 60px;
+    display: flex; flex-direction: column; align-items: flex-end; gap: 12px; animation: fadeUp 0.8s 0.5s ease both;
+  }
+  .hero-meta-item { display: flex; align-items: center; gap: 10px; font-size: 11px; color: var(--muted); letter-spacing: 0.1em; }
+  .hero-meta-item a { color: var(--muted); text-decoration: none; transition: color 0.2s; }
+  .hero-meta-item a:hover { color: var(--cyan); }
+  .meta-icon { color: var(--cyan); }
+  .avail-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--green); animation: blink 2s ease-in-out infinite; }
+  @keyframes blink { 0%,100%{opacity:1;} 50%{opacity:0.3;} }
+  @keyframes fadeUp { from{opacity:0;transform:translateY(20px);} to{opacity:1;transform:translateY(0);} }
+
+  /* TICKER */
+  .ticker { border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 14px 0; overflow: hidden; white-space: nowrap; }
+  .ticker-inner { display: inline-block; animation: tick 25s linear infinite; }
+  .ticker-inner:hover { animation-play-state: paused; }
+  .tick-item { display: inline-flex; align-items: center; gap: 8px; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-right: 40px; }
+  .tick-dot { color: var(--cyan); font-size: 6px; }
+  @keyframes tick { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+  /* SECTIONS */
+  section { padding: 96px 56px; }
+  .sec-head { display: flex; align-items: center; gap: 18px; margin-bottom: 60px; }
+  .sec-num { font-size: 11px; color: var(--cyan); letter-spacing: 0.15em; }
+  .sec-title { font-family: 'Bebas Neue', sans-serif; font-size: clamp(32px, 4vw, 56px); letter-spacing: 3px; color: var(--bright); line-height: 1; }
+  .sec-rule { flex:1; height:1px; background: var(--border); }
+
+  /* ABOUT */
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+  .about-block { background: var(--surface); border: 1px solid var(--border); padding: 44px; }
+  .about-block h3 { font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--cyan); margin-bottom: 20px; }
+  .about-block p { font-family: 'IBM Plex Sans', sans-serif; font-size: 14px; font-weight: 300; line-height: 1.9; color: var(--muted); }
+  .about-block p + p { margin-top: 14px; }
+  .about-block strong { color: var(--text); font-weight: 500; }
+  .cert-item { display: flex; align-items: flex-start; gap: 12px; font-family: 'IBM Plex Sans', sans-serif; font-size: 13px; color: var(--muted); margin-bottom: 10px; }
+  .cert-item::before { content: '◆'; color: var(--cyan); font-size: 7px; flex-shrink: 0; margin-top: 5px; }
+  .stat-row { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; margin-top: 2px; }
+  .stat-cell { background: var(--surface); border: 1px solid var(--border); padding: 32px 28px; text-align: center; }
+  .stat-big { font-family: 'Bebas Neue', sans-serif; font-size: 52px; letter-spacing: 2px; color: var(--cyan); line-height: 1; margin-bottom: 6px; }
+  .stat-lbl { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+
+  /* PROJECTS */
+  .projects-grid { display: flex; flex-direction: column; gap: 2px; }
+  .proj-card {
+    display: grid; grid-template-columns: 56px 1fr auto; gap: 32px; align-items: start;
+    background: var(--surface); border: 1px solid var(--border); padding: 36px 40px;
+    transition: border-color 0.25s, background 0.25s; position: relative; overflow: hidden;
+  }
+  .proj-card::after {
+    content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px;
+    background: var(--cyan); transform: scaleY(0); transform-origin: top; transition: transform 0.3s;
+  }
+  .proj-card:hover { background: var(--surface2); border-color: var(--border2); }
+  .proj-card:hover::after { transform: scaleY(1); }
+  .proj-num { font-family: 'Bebas Neue', sans-serif; font-size: 38px; color: var(--border2); letter-spacing: 2px; line-height: 1; padding-top: 2px; transition: color 0.2s; }
+  .proj-card:hover .proj-num { color: var(--cyan); }
+  .proj-name { font-family: 'IBM Plex Sans', sans-serif; font-size: 18px; font-weight: 600; color: var(--bright); margin-bottom: 10px; letter-spacing: -0.3px; }
+  .proj-name span { font-size: 11px; font-weight: 400; color: var(--orange); letter-spacing: 0.1em; text-transform: uppercase; margin-left: 12px; }
+  .proj-desc { font-family: 'IBM Plex Sans', sans-serif; font-size: 13px; font-weight: 300; color: var(--muted); line-height: 1.8; max-width: 640px; margin-bottom: 20px; }
+  .proj-desc strong { color: var(--cyan); font-weight: 600; }
+  .proj-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+  .ptag { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); border: 1px solid var(--border); padding: 3px 9px; transition: border-color 0.2s, color 0.2s; }
+  .proj-card:hover .ptag { border-color: var(--border2); color: var(--text); }
+  .proj-arrow { font-size: 22px; color: var(--border2); transition: color 0.2s, transform 0.2s; margin-top: 2px; }
+  .proj-card:hover .proj-arrow { color: var(--cyan); transform: translate(4px,-4px); }
+
+  /* SKILLS */
+  .skills-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+  .skill-panel { background: var(--surface); border: 1px solid var(--border); padding: 40px; }
+  .skill-panel-title { font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--orange); margin-bottom: 32px; }
+  .skill-row { margin-bottom: 22px; }
+  .skill-meta { display: flex; justify-content: space-between; margin-bottom: 7px; }
+  .skill-name-lbl { font-size: 12px; color: var(--text); }
+  .skill-pct-lbl { font-size: 11px; color: var(--muted); }
+  .bar-track { height: 2px; background: var(--border); position: relative; overflow: hidden; }
+  .bar-fill { position: absolute; top:0; left:0; height:100%; background: linear-gradient(90deg, var(--cyan), var(--green)); width: 0%; transition: width 1.4s cubic-bezier(0.22, 1, 0.36, 1); }
+  .bar-fill.go { width: var(--w); }
+  .chips-wrap { background: var(--surface); border: 1px solid var(--border); padding: 40px; grid-column: 1 / -1; }
+  .chips-title { font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--cyan); margin-bottom: 24px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 10px; }
+  .chip { font-size: 11px; letter-spacing: 0.08em; color: var(--muted); border: 1px solid var(--border); padding: 6px 14px; transition: border-color 0.2s, color 0.2s, background 0.2s; cursor: default; }
+  .chip:hover { border-color: var(--cyan); color: var(--cyan); background: var(--cyan-dim); }
+
+  /* EXPERIENCE */
+  .exp-list { display: flex; flex-direction: column; gap: 2px; }
+  .exp-card { display: grid; grid-template-columns: 220px 1fr; background: var(--surface); border: 1px solid var(--border); overflow: hidden; transition: border-color 0.2s; }
+  .exp-card:hover { border-color: var(--border2); }
+  .exp-left { border-right: 1px solid var(--border); padding: 36px 32px; display: flex; flex-direction: column; gap: 8px; background: var(--surface2); }
+  .exp-period { font-size: 11px; color: var(--cyan); letter-spacing: 0.1em; }
+  .exp-company { font-family: 'IBM Plex Sans', sans-serif; font-size: 13px; font-weight: 600; color: var(--text); line-height: 1.4; margin-top: 4px; }
+  .exp-loc { font-size: 11px; color: var(--muted); margin-top: 2px; }
+  .exp-badge { display: inline-block; margin-top: 12px; font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; padding: 3px 8px; border: 1px solid var(--orange); color: var(--orange); }
+  .exp-right { padding: 36px 40px; }
+  .exp-role { font-family: 'IBM Plex Sans', sans-serif; font-size: 17px; font-weight: 600; color: var(--bright); letter-spacing: -0.3px; margin-bottom: 16px; }
+  .exp-bullets { display: flex; flex-direction: column; gap: 11px; }
+  .exp-bullet { display: flex; gap: 12px; font-family: 'IBM Plex Sans', sans-serif; font-size: 13px; font-weight: 300; color: var(--muted); line-height: 1.7; }
+  .bullet-mark { color: var(--cyan); flex-shrink: 0; }
+  .exp-bullet strong { color: var(--text); font-weight: 500; }
+
+  /* CONTACT */
+  .contact-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+  .contact-left { background: var(--cyan); padding: 60px; display: flex; flex-direction: column; justify-content: space-between; }
+  .contact-big { font-family: 'Bebas Neue', sans-serif; font-size: clamp(36px, 5vw, 68px); letter-spacing: 4px; color: var(--bg); line-height: 0.95; margin-bottom: 28px; }
+  .contact-sub { font-family: 'IBM Plex Sans', sans-serif; font-size: 14px; font-weight: 300; color: rgba(6,11,20,0.6); line-height: 1.8; max-width: 320px; margin-bottom: 40px; }
+  .contact-links { display: flex; flex-direction: column; gap: 12px; }
+  .clink { display: flex; align-items: center; justify-content: space-between; padding: 14px 18px; background: rgba(6,11,20,0.1); border: 1px solid rgba(6,11,20,0.18); text-decoration: none; color: var(--bg); font-size: 12px; letter-spacing: 0.04em; transition: background 0.2s; }
+  .clink:hover { background: rgba(6,11,20,0.2); }
+  .contact-right { background: var(--surface); border: 1px solid var(--border); padding: 60px; }
+  .contact-right h3 { font-family: 'Bebas Neue', sans-serif; font-size: 28px; letter-spacing: 3px; color: var(--bright); margin-bottom: 32px; }
+  .form-row { display: flex; flex-direction: column; gap: 6px; margin-bottom: 18px; }
+  .form-row label { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+  .form-row input, .form-row textarea {
+    background: var(--bg); border: 1px solid var(--border); color: var(--text); padding: 11px 14px;
+    font-family: 'IBM Plex Mono', monospace; font-size: 12px; outline: none; resize: none; transition: border-color 0.2s;
+  }
+  .form-row input:focus, .form-row textarea:focus { border-color: var(--cyan); }
+  .form-row input::placeholder, .form-row textarea::placeholder { color: var(--muted); }
+  .form-submit { background: var(--cyan); color: var(--bg); border: none; padding: 14px 32px; font-family: 'Bebas Neue', sans-serif; font-size: 18px; letter-spacing: 3px; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; }
+  .form-submit:hover { transform: translate(-2px,-2px); box-shadow: 4px 4px 0 var(--orange); }
+
+  /* FOOTER */
+  footer { padding: 28px 56px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
+  .foot-copy { font-size: 11px; color: var(--muted); letter-spacing: 0.08em; }
+  .foot-links { display: flex; gap: 24px; }
+  .foot-links a { font-size: 11px; color: var(--muted); text-decoration: none; letter-spacing: 0.1em; text-transform: uppercase; transition: color 0.2s; }
+  .foot-links a:hover { color: var(--cyan); }
+
+  /* REVEAL */
+  .r { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .r.v { opacity: 1; transform: none; }
+
+  /* RESPONSIVE */
+  @media (max-width: 860px) {
+    nav { padding: 16px 24px; }
+    .nav-links { display: none; }
+    .hero { padding: 100px 24px 64px; }
+    .hero-meta { display: none; }
+    section { padding: 72px 24px; }
+    .about-grid, .skills-wrap, .contact-wrap { grid-template-columns: 1fr; }
+    .chips-wrap { grid-column: 1; }
+    .stat-row { grid-template-columns: 1fr 1fr; }
+    .exp-card { grid-template-columns: 1fr; }
+    .exp-left { border-right: none; border-bottom: 1px solid var(--border); padding: 24px; }
+    .exp-right { padding: 28px 24px; }
+    .proj-card { grid-template-columns: 1fr; gap: 12px; padding: 28px 24px; }
+    .proj-num { display: none; }
+    .contact-left { padding: 40px 28px; }
+    .contact-right { padding: 40px 28px; }
+    footer { flex-direction: column; gap: 16px; padding: 24px; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="nav-logo">SK.</div>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#projects">Projects</a>
+    <a href="#skills">Skills</a>
+    <a href="#experience">Experience</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-glow"></div>
+  <div class="hero-glow2"></div>
+  <div class="hero-tag"><div class="hero-tag-line"></div>Senior Software Engineer</div>
+  <h1 class="hero-name">SUDHIR<br><span class="outline">KUMAR</span></h1>
+  <p class="hero-title">Automation Frameworks &nbsp;·&nbsp; <span>CI/CD Pipelines</span> &nbsp;·&nbsp; DevOps Engineering</p>
+  <p class="hero-desc">
+    7+ years crafting robust automation systems and engineering tools for global teams.
+    Specializing in Python-based test frameworks, pipeline optimization, and distributed collaboration
+    — enabling teams to ship faster with higher confidence.
+  </p>
+  <div class="hero-actions">
+    <a href="#projects" class="btn btn-cyan">View Projects →</a>
+    <a href="#contact" class="btn btn-outline">Hire Me</a>
+  </div>
+  <div class="hero-meta">
+    <div class="hero-meta-item"><span class="meta-icon">◆</span><a href="mailto:sudhirkr7870@live.com">sudhirkr7870@live.com</a></div>
+    <div class="hero-meta-item"><span class="meta-icon">◆</span><a href="https://linkedin.com/in/sudhir9304923835" target="_blank">linkedin.com/in/sudhir9304923835</a></div>
+    <div class="hero-meta-item"><span class="meta-icon">◆</span>Bangalore, India</div>
+    <div class="hero-meta-item"><div class="avail-dot"></div>Open to Global Remote</div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-inner">
+    <span class="tick-item">Python <span class="tick-dot">●</span></span>
+    <span class="tick-item">CI/CD Pipelines <span class="tick-dot">●</span></span>
+    <span class="tick-item">Jenkins <span class="tick-dot">●</span></span>
+    <span class="tick-item">SonarQube <span class="tick-dot">●</span></span>
+    <span class="tick-item">pytest <span class="tick-dot">●</span></span>
+    <span class="tick-item">GitHub Actions <span class="tick-dot">●</span></span>
+    <span class="tick-item">REST APIs <span class="tick-dot">●</span></span>
+    <span class="tick-item">Flask <span class="tick-dot">●</span></span>
+    <span class="tick-item">HIL / SIL Testing <span class="tick-dot">●</span></span>
+    <span class="tick-item">DevOps <span class="tick-dot">●</span></span>
+    <span class="tick-item">Embedded C <span class="tick-dot">●</span></span>
+    <span class="tick-item">GitHub Copilot <span class="tick-dot">●</span></span>
+    <span class="tick-item">Python <span class="tick-dot">●</span></span>
+    <span class="tick-item">CI/CD Pipelines <span class="tick-dot">●</span></span>
+    <span class="tick-item">Jenkins <span class="tick-dot">●</span></span>
+    <span class="tick-item">SonarQube <span class="tick-dot">●</span></span>
+    <span class="tick-item">pytest <span class="tick-dot">●</span></span>
+    <span class="tick-item">GitHub Actions <span class="tick-dot">●</span></span>
+    <span class="tick-item">REST APIs <span class="tick-dot">●</span></span>
+    <span class="tick-item">Flask <span class="tick-dot">●</span></span>
+    <span class="tick-item">HIL / SIL Testing <span class="tick-dot">●</span></span>
+    <span class="tick-item">DevOps <span class="tick-dot">●</span></span>
+    <span class="tick-item">Embedded C <span class="tick-dot">●</span></span>
+    <span class="tick-item">GitHub Copilot <span class="tick-dot">●</span></span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="sec-head r">
+    <span class="sec-num">01</span>
+    <h2 class="sec-title">ABOUT</h2>
+    <div class="sec-rule"></div>
+  </div>
+  <div class="about-grid r">
+    <div class="about-block">
+      <h3>Profile</h3>
+      <p>Senior Software Engineer with <strong>7+ years of experience</strong> designing, building, and maintaining scalable automation frameworks and engineering tools for global teams.</p>
+      <p>Deep expertise in <strong>Python-based automation</strong>, CI/CD pipeline design, Jenkins, and SonarQube integration. Proven track record of improving delivery speed, code quality, and test reliability across distributed international environments.</p>
+      <p>Comfortable in <strong>asynchronous, ownership-driven environments</strong> — having collaborated with teams across Europe and Asia, including an onsite assignment at Bosch Germany.</p>
+    </div>
+    <div class="about-block">
+      <h3>Education &amp; Certifications</h3>
+      <p><strong>Bachelor of Engineering</strong><br>Electronics and Communication<br>KIT, Tiptur, India &nbsp;·&nbsp; 2013–2017</p>
+      <div style="margin-top:24px;">
+        <div class="cert-item">Clean Coding Foundation — Bosch</div>
+        <div class="cert-item">Train the Trainer Basics — Bosch</div>
+      </div>
+      <div style="margin-top:32px;">
+        <h3>Location</h3>
+        <p style="margin-top:8px;"><strong>Bangalore, India</strong><br>Open to Global Remote Opportunities</p>
+      </div>
+    </div>
+  </div>
+  <div class="stat-row r">
+    <div class="stat-cell"><div class="stat-big">7+</div><div class="stat-lbl">Years Experience</div></div>
+    <div class="stat-cell"><div class="stat-big">70%</div><div class="stat-lbl">Manual Effort Reduced</div></div>
+    <div class="stat-cell"><div class="stat-big">30%</div><div class="stat-lbl">Build Cycle Time Cut</div></div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" style="background: var(--surface);">
+  <div class="sec-head r">
+    <span class="sec-num">02</span>
+    <h2 class="sec-title">PROJECTS</h2>
+    <div class="sec-rule"></div>
+  </div>
+  <div class="projects-grid">
+    <div class="proj-card r">
+      <div class="proj-num">01</div>
+      <div>
+        <div class="proj-name">TurboLIFT <span>Bosch</span></div>
+        <p class="proj-desc">Perl-based automation framework for airbag system validation on Hardware-in-the-Loop (HIL) test benches. Developed, maintained, and provided global user support for international teams across Europe and Asia. Enabled remote and repeatable test execution, dramatically reducing manual testing overhead across distributed environments.</p>
+        <div class="proj-tags">
+          <span class="ptag">Perl</span>
+          <span class="ptag">HIL Testing</span>
+          <span class="ptag">Automotive Safety</span>
+          <span class="ptag">Test Automation</span>
+          <span class="ptag">CI/CD</span>
+          <span class="ptag">Jenkins</span>
+        </div>
+      </div>
+      <div class="proj-arrow">↗</div>
+    </div>
+    <div class="proj-card r">
+      <div class="proj-num">02</div>
+      <div>
+        <div class="proj-name">ecu.test <span>TraceTronic</span></div>
+        <p class="proj-desc">Python and C# automation framework for next-generation airbag system validation on both HIL and SIL platforms. Reduced manual testing effort by <strong>~70%</strong> through fully automated, remotely executable test suites. Optimized Jenkins CI/CD pipelines cutting build &amp; test cycle time by <strong>~30%</strong>. Integrated SonarQube, reducing defects by <strong>~30%</strong>.</p>
+        <div class="proj-tags">
+          <span class="ptag">Python</span>
+          <span class="ptag">C#</span>
+          <span class="ptag">Jenkins</span>
+          <span class="ptag">SonarQube</span>
+          <span class="ptag">HIL/SIL</span>
+          <span class="ptag">REST API</span>
+          <span class="ptag">Flask</span>
+          <span class="ptag">pytest</span>
+        </div>
+      </div>
+      <div class="proj-arrow">↗</div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="sec-head r">
+    <span class="sec-num">03</span>
+    <h2 class="sec-title">SKILLS</h2>
+    <div class="sec-rule"></div>
+  </div>
+  <div class="skills-wrap">
+    <div class="skill-panel r">
+      <div class="skill-panel-title">Languages &amp; Frameworks</div>
+      <div class="skill-row"><div class="skill-meta"><span class="skill-name-lbl">Python</span><span class="skill-pct-lbl">95%</span></div><div class="bar-track"><div class="bar-fill" style="--w:95%"></div></div></div>
+      <div class="skill-row"><div class="skill-meta"><span class="skill-name-lbl">C# / .NET</span><span class="skill-pct-lbl">75%</span></div><div class="bar-track"><div class="bar-fill" style="--w:75%"></div></div></div>
+      <div class="skill-row"><div class="skill-meta"><span class="skill-name-lbl">Perl</span><span class="skill-pct-lbl">80%</span></div><div class="bar-track"><div class="bar-fill" style="--w:80%"></div></div></div>
+      <div class="skill-row"><div class="skill-meta"><span class="skill-name-lbl">Embedded C</span><span class="skill-pct-lbl">72%</span></div><div class="bar-track"><div class="bar-fill" style="--w:72%"></div></div></div>
+      <div class="skill-row"><div class="skill-meta"><span class="skill-name-lbl">Flask / REST APIs</span><span class="skill-pct-lbl">82%</span></div><div class="bar-track"><div class="bar-fill" style="--w:82%"></div></div></div>
+      <div class="skill-row"><div class="skill-meta"><span class="skill-name-lbl">HTML / CSS / JS</span><span class="skill-pct-lbl">65%</span></div><div class="bar-track"><div class="bar-fill" style="--w:65%"></div></div></div>
+    </div>
+    <div class="skill-panel r">
+      <div class="skill-panel-title">DevOps &amp; Tooling</div>
+      <div class="skill-row"><div class="skill-meta"><span class="skill-name-lbl">Jenkins / CI-CD</span><span class="skill-pct-lbl">90%</span></div><div class="bar-track"><div class="bar-fill" style="--w:90%"></div></div></div>
+      <div class="skill-row"><div class="skill-meta"><span class="skill-name-lbl">Git / GitHub Actions</span><span class="skill-pct-lbl">88%</span></div><div class="bar-track"><div class="bar-fill" style="--w:88%"></div></div></div>
+      <div class="skill-row"><div class="skill-meta"><span class="skill-name-lbl">SonarQube</span><span class="skill-pct-lbl">85%</span></div><div class="bar-track"><div class="bar-fill" style="--w:85%"></div></div></div>
+      <div class="skill-row"><div class="skill-meta"><span class="skill-name-lbl">pytest</span><span class="skill-pct-lbl">92%</span></div><div class="bar-track"><div class="bar-fill" style="--w:92%"></div></div></div>
+      <div class="skill-row"><div class="skill-meta"><span class="skill-name-lbl">HIL / SIL Platforms</span><span class="skill-pct-lbl">87%</span></div><div class="bar-track"><div class="bar-fill" style="--w:87%"></div></div></div>
+      <div class="skill-row"><div class="skill-meta"><span class="skill-name-lbl">GitHub Copilot / VS Code</span><span class="skill-pct-lbl">80%</span></div><div class="bar-track"><div class="bar-fill" style="--w:80%"></div></div></div>
+    </div>
+    <div class="chips-wrap r">
+      <div class="chips-title">Full Technology Stack</div>
+      <div class="chips">
+        <span class="chip">Python</span><span class="chip">C#</span><span class="chip">Perl</span><span class="chip">Embedded C</span>
+        <span class="chip">Flask</span><span class="chip">REST APIs</span><span class="chip">pytest</span><span class="chip">Jenkins</span>
+        <span class="chip">CI/CD</span><span class="chip">SonarQube</span><span class="chip">Git</span><span class="chip">GitHub Actions</span>
+        <span class="chip">GitHub Copilot</span><span class="chip">VS Code</span><span class="chip">HIL Testing</span><span class="chip">SIL Testing</span>
+        <span class="chip">ECU Validation</span><span class="chip">Batch Scripting</span><span class="chip">HTML/CSS/JS</span>
+        <span class="chip">Async Collaboration</span><span class="chip">Technical Documentation</span><span class="chip">Mentoring</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience" style="background: var(--surface);">
+  <div class="sec-head r">
+    <span class="sec-num">04</span>
+    <h2 class="sec-title">EXPERIENCE</h2>
+    <div class="sec-rule"></div>
+  </div>
+  <div class="exp-list">
+    <div class="exp-card r">
+      <div class="exp-left">
+        <div class="exp-period">Aug 2020 — Present</div>
+        <div class="exp-company">Bosch Global Software Technologies</div>
+        <div class="exp-loc">Bangalore, India</div>
+        <span class="exp-badge">Current</span>
+      </div>
+      <div class="exp-right">
+        <div class="exp-role">Senior Software Engineer</div>
+        <div class="exp-bullets">
+          <div class="exp-bullet"><span class="bullet-mark">▸</span>Developed and maintained automation frameworks (<strong>TurboLIFT, ecu.test</strong>) using Python, C#, and Perl, supporting distributed global teams across time zones.</div>
+          <div class="exp-bullet"><span class="bullet-mark">▸</span>Enabled remote execution of automated test suites for <strong>ECU validation on HIL and SIL systems</strong>, reducing manual effort by ~70%.</div>
+          <div class="exp-bullet"><span class="bullet-mark">▸</span>Optimized <strong>CI/CD pipelines with Jenkins</strong>, reducing build and test cycle time by ~30%, enabling faster feedback for remote developers.</div>
+          <div class="exp-bullet"><span class="bullet-mark">▸</span>Integrated <strong>SonarQube</strong> into CI pipelines, improving code quality and reducing defects by ~30%.</div>
+          <div class="exp-bullet"><span class="bullet-mark">▸</span>Actively participated in async code reviews, design discussions, and documentation ensuring smooth remote collaboration.</div>
+          <div class="exp-bullet"><span class="bullet-mark">▸</span>Mentored engineers remotely, conducted virtual training sessions, and created reusable technical documentation.</div>
+        </div>
+      </div>
+    </div>
+    <div class="exp-card r">
+      <div class="exp-left">
+        <div class="exp-period">Oct 2023 — Nov 2023</div>
+        <div class="exp-company">Bosch Engineering GmbH</div>
+        <div class="exp-loc">Bietigheim-Bissingen, Germany</div>
+        <span class="exp-badge">Onsite</span>
+      </div>
+      <div class="exp-right">
+        <div class="exp-role">Global Collaboration Assignment</div>
+        <div class="exp-bullets">
+          <div class="exp-bullet"><span class="bullet-mark">▸</span>Collaborated with international teams to adapt <strong>ecu.test automation frameworks</strong> for next-generation airbag system testing.</div>
+          <div class="exp-bullet"><span class="bullet-mark">▸</span>Aligned automation and CI workflows with <strong>DevOps best practices</strong> for globally distributed teams.</div>
+          <div class="exp-bullet"><span class="bullet-mark">▸</span>Supported validation on HIL and SIL platforms, ensuring test reliability across diverse environments.</div>
+        </div>
+      </div>
+    </div>
+    <div class="exp-card r">
+      <div class="exp-left">
+        <div class="exp-period">Jan 2018 — Mar 2020</div>
+        <div class="exp-company">Loginware Softtec Pvt. Ltd.</div>
+        <div class="exp-loc">Bangalore, India</div>
+      </div>
+      <div class="exp-right">
+        <div class="exp-role">Software Engineer</div>
+        <div class="exp-bullets">
+          <div class="exp-bullet"><span class="bullet-mark">▸</span>Developed <strong>embedded software solutions</strong> using Embedded C and Python for hardware products.</div>
+          <div class="exp-bullet"><span class="bullet-mark">▸</span>Delivered end-to-end solutions covering programming, debugging, and testing of embedded systems.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="sec-head r">
+    <span class="sec-num">05</span>
+    <h2 class="sec-title">CONTACT</h2>
+    <div class="sec-rule"></div>
+  </div>
+  <div class="contact-wrap r">
+    <div class="contact-left">
+      <div>
+        <div class="contact-big">LET'S<br>WORK<br>TOGETHER.</div>
+        <p class="contact-sub">Open to senior engineering roles, remote DevOps contracts, and automation consulting opportunities globally.</p>
+      </div>
+      <div class="contact-links">
+        <a href="mailto:sudhirkr7870@live.com" class="clink">sudhirkr7870@live.com <span>→</span></a>
+        <a href="tel:+919304923835" class="clink">+91 93049 23835 <span>→</span></a>
+        <a href="https://linkedin.com/in/sudhir9304923835" target="_blank" class="clink">linkedin.com/in/sudhir9304923835 <span>→</span></a>
+      </div>
+    </div>
+    <div class="contact-right">
+      <h3>SEND A MESSAGE</h3>
+      <div class="form-row"><label>Your Name</label><input type="text" id="f-name" placeholder="Jane Smith"></div>
+      <div class="form-row"><label>Email Address</label><input type="email" id="f-email" placeholder="jane@company.com"></div>
+      <div class="form-row"><label>Subject</label><input type="text" placeholder="Job opportunity / Contract / Collaboration"></div>
+      <div class="form-row"><label>Message</label><textarea rows="5" placeholder="Tell me about the role or project..."></textarea></div>
+      <button class="form-submit" id="f-btn">SEND MESSAGE &#8594;</button>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-copy">© 2025 Sudhir Kumar — Built for GitHub Pages.</div>
+  <div class="foot-links">
+    <a href="#home">Back to Top ↑</a>
+    <a href="mailto:sudhirkr7870@live.com">Email</a>
+    <a href="https://linkedin.com/in/sudhir9304923835" target="_blank">LinkedIn</a>
+  </div>
+</footer>
+
+<script>
+  const nav = document.getElementById('nav');
+  addEventListener('scroll', () => nav.classList.toggle('stuck', scrollY > 50));
+
+  const items = document.querySelectorAll('.r');
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        setTimeout(() => {
+          e.target.classList.add('v');
+          e.target.querySelectorAll('.bar-fill').forEach(b => b.classList.add('go'));
+        }, 80);
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  items.forEach(el => io.observe(el));
+
+  document.querySelectorAll('a[href^="#"]').forEach(a =>
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      const t = document.querySelector(a.getAttribute('href'));
+      if (t) t.scrollIntoView({ behavior: 'smooth' });
+    })
+  );
+
+  document.getElementById('f-btn').addEventListener('click', () => {
+    const btn = document.getElementById('f-btn');
+    const name = document.getElementById('f-name').value.trim();
+    const email = document.getElementById('f-email').value.trim();
+    if (!name || !email) {
+      btn.textContent = 'FILL REQUIRED FIELDS';
+      btn.style.background = 'var(--orange)';
+      setTimeout(() => { btn.textContent = 'SEND MESSAGE \u2192'; btn.style.background = ''; }, 2200);
+      return;
+    }
+    btn.textContent = 'MESSAGE SENT \u2713';
+    btn.style.background = 'var(--green)';
+    setTimeout(() => { btn.textContent = 'SEND MESSAGE \u2192'; btn.style.background = ''; }, 3500);
+  });
+</script>
+</body>
+</html>
