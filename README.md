@@ -26,8 +26,8 @@ Senior Software Engineer with 6+ years of experience in end to end software deve
 
 ## 🚀 Tech Stack
 - ![Python](https://img.shields.io/badge/Python-green)
-- ![Flask](https://img.shields.io/badge/Django-blue)
-- ![REST API](https://img.shields.io/badge/Docker-blue)
+- ![Flask](https://img.shields.io/badge/Flask-blue)
+- ![REST API](https://img.shields.io/badge/REST API-blue)
 
 
 ## 📊 GitHub Stats
