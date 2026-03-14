@@ -17,7 +17,7 @@ Here are some ideas to get you started:
 # Hi there 👋 I'm Sudhir Kumar
 ![Profile Views](https://komarev.com/ghpvc/?username=skbitlab&color=blue)
 
-Senior Software Engineer with 6+ years of experience in end to end software development.
+Software Engineer with 6+ years of experience in end to end software development.
 - 🔭 Currently working as a Senior Software Engineer @ BOSCH.
 - 🏡 Working on a project: 'automation tools and framework'.
 - 🌱 Continuously improving my skills in 'Data Structures & Algorithms', 'System Design', 'DevOps', and 'AI with Python'.
