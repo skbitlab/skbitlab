@@ -20,7 +20,7 @@ Here are some ideas to get you started:
 Senior Software Engineer with 6+ years of experience in end to end software development.
 - 🔭 Currently working as a Senior Software Engineer @ BOSCH.
 - 🏡 Working on a project: 'automation tools and framework'.
-- 🌱 Continuously improving my skills in Data Structures & Algorithms, System Design, DevOps, and AI with Python.
+- 🌱 Continuously improving my skills in 'Data Structures & Algorithms', 'System Design', 'DevOps', and 'AI with Python'.
 - 💡 Interested in building scalable software applications.
 
 
@@ -28,10 +28,6 @@ Senior Software Engineer with 6+ years of experience in end to end software deve
 - ![Python](https://img.shields.io/badge/Python-green)
 - ![Flask](https://img.shields.io/badge/Flask-blue)
 - ![REST API](https://img.shields.io/badge/REST-APIs-blue)
-
-
-## 📊 GitHub Stats
-![GitHub stats](https://github-readme-stats.vercel.app/api?username=skbitlab&show_icons=true)
 
 
 ## 📫 Connect With Me
