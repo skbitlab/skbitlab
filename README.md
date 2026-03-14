@@ -1,5 +1,3 @@
-## Hi there 👋
-
 <!--
 **skbitlab/skbitlab** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 
@@ -14,3 +12,42 @@ Here are some ideas to get you started:
 - 😄 Pronouns: ...
 - ⚡ Fun fact: ...
 -->
+
+# Hi there 👋 I'm Sudhir Kumar
+
+Senior Software Engineer with 6+ years of experience in end to end software development.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
