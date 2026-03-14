@@ -13,20 +13,22 @@ Here are some ideas to get you started:
 - ⚡ Fun fact: ...
 -->
 
+
 # Hi there 👋 I'm Sudhir Kumar
-- Senior Software Engineer with 6+ years of experience in end to end software development.
+![Profile Views](https://komarev.com/ghpvc/?username=skbitlab&color=blue)
+
+Senior Software Engineer with 6+ years of experience in end to end software development.
 - 🔭 Currently working as a Senior Software Engineer @ BOSCH.
 - 🏡 Working on a project: 'automation tools and framework'.
 - 🌱 Continuously improving my skills in Data Structures & Algorithms, System Design, DevOps, and AI with Python.
 - 💡 Interested in building scalable software applications.
+
 
 ## 🚀 Tech Stack
 ![Python](https://img.shields.io/badge/Python-blue)
 ![Flask](https://img.shields.io/badge/Django-green)
 ![REST API](https://img.shields.io/badge/Docker-blue)
 ![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=skbitlab)
-![GitHub Streak](https://streak-stats.demolab.com/?user=skbitlab)
-![Profile Views](https://komarev.com/ghpvc/?username=skbitlab&color=blue)
 
 
 ## 📊 GitHub Stats
@@ -34,9 +36,9 @@ Here are some ideas to get you started:
 
 
 ## 📫 Connect With Me
-LinkedIn: https://linkedin.com/in/username  
-Email: sudhirkr7870@gmail.com | sudhirkr7870@live.com
-Mob: +91-9304923835
+- 📧 Email: sudhirkr7870@gmail.com | sudhirkr7870@live.com
+- 📱 Mobile: +91-9304923835
+- 💼 LinkedIn: [https://www.linkedin.com/in/sudhir9304923835/](https://www.linkedin.com/in/sudhir9304923835/)
 
 
 
